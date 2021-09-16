@@ -3,6 +3,24 @@
 const { regions, endpoints } = require("../constants");
 const { makeRequest, options } = require("../helpers/request");
 
+async function summonerRequest(region, path, summoner) {
+
+    if ((region && !Object.values(regions).includes(region)) || (!region && !Object.values(regions).includes(options.defaultRegion))) {
+        
+        throw new Error("Region: '" + region + "' is not a valid region");
+
+    } else {
+
+        const url = (region ? region : options.defaultRegion)
+            + endpoints.base 
+            + endpoints.lol.summoner
+            + path
+            + summoner;
+    
+        return await makeRequest(url);
+    }
+}
+
 /**
  * Get a summoner by their name
  * @param {String} summonerName 
@@ -20,8 +38,6 @@ async function getSummonerByName(summonerName, region = "") {
     }
 
     const url = (region ? region : options.defaultRegion) + endpoints.base + endpoints.lol.summoner + "by-name/" + summonerName;
-
-    return await makeRequest(url);
 }
 
 module.exports = {
