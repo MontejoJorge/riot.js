@@ -11,10 +11,8 @@ const { makeRequest, options } = require("../helpers/request");
  */
 async function getSummonerByName(summonerName, region = "") {
 
-    if (!Object.values(regions).includes(region)) {      
-        if (!Object.values(regions).includes(options.defaultRegion)) {
-            throw new Error("Region: '" + region + "' is not a valid region");
-        }  
+    if ((region && !Object.values(regions).includes(region)) || (!region && !Object.values(regions).includes(options.defaultRegion))) {
+        throw new Error("Region: '" + region + "' is not a valid region");
     }
 
     if (!summonerName) {
