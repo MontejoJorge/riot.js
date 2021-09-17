@@ -30,7 +30,12 @@ describe("Riot.js", function () {
             expect(data).to.be.an.instanceOf(Object);
         })
 
-        it("Get summoner by name, wrong region", async function () {
+        it("Get summoner by id", async function () {
+            const data = await RiotJS.league.summoner.getSummonerById();
+            expect(data).to.be.an.instanceOf(Object);
+        })
+
+        it("Wrong region error", async function () {
             return RiotJS.league.summoner.getSummonerByName("TehKeppler", "not-a-region").should.eventually.rejected;
         })
     })
