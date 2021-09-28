@@ -7,6 +7,8 @@
   - [Introduction](#introduction)
   - [Bug reports](#bug-reports)
   - [Discuss your design](#discuss-your-design)
+  - [Commit message format](#commit-message-format)
+      - [Types](#types)
   - [Testing](#testing)
 
 ## Introduction
@@ -35,6 +37,25 @@ Significant changes must go through the change proposal process
 before they can be accepted. To create a proposal, file an issue with
 your proposed changes documented, and make sure to note in the title
 of the issue that it is a proposal.
+
+## Commit message format
+
+```
+<type>: <description>
+
+[optional body]
+
+[optional footer]
+```
+#### Types
+**feat** - A new feature  
+**fix** - A bug fix  
+**docs** - Changes in documentation  
+**style** - Style changes, formatting, missing semicolons or whitespaces  
+**refactor** - Code changes that neither fixes a bug or adds a feature  
+**perf** - Changes that improve performance  
+**test** - Changes related to tests  
+**chore** - Changes the build process
 
 ## Testing
 
