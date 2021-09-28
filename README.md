@@ -36,7 +36,7 @@ RiotJS.league.summoner.getSummonerByName("TehKeppler")
 # Endpoints
 ## League
 ### Summoner
-- [ ] Get a summoner by account ID
+- [x] Get a summoner by account ID
 - [x] Get a summoner by summoner name
-- [ ] Get a summoner by PUUID
-- [ ] Get a summoner by summoner ID
+- [x] Get a summoner by PUUID
+- [x] Get a summoner by summoner ID
