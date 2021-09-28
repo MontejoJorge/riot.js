@@ -57,7 +57,7 @@ async function getSummonerById(summonerId, region = "") {
  * @param {Region} [region] 
  * @returns {{ data: Object, http_code: Number, error_msg: (String|undefined) }} response
  */
- async function getSummonerById(accountId, region = "") {
+ async function getSummonerByAccountId(accountId, region = "") {
 
     if (!accountId) {
         throw new Error("Account id not found");
@@ -72,16 +72,18 @@ async function getSummonerById(summonerId, region = "") {
  * @param {Region} [region] 
  * @returns {{ data: Object, http_code: Number, error_msg: (String|undefined) }} response
  */
- async function getSummonerById(puuid, region = "") {
+ async function getSummonerByPuuid(puuid, region = "") {
 
     if (!puuid) {
         throw new Error("puuid not found");
     }
 
-    return await summonerRequest(region, "by-puuid", puuid);
+    return await summonerRequest(region, "by-puuid/", puuid);
 }
 
 module.exports = {
     getSummonerByName,
-    getSummonerById
+    getSummonerById,
+    getSummonerByAccountId,
+    getSummonerByPuuid
 }
