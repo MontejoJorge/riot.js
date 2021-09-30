@@ -33,7 +33,7 @@ async function makeRequest(url) {
 
     var code;
 
-    const response = await fetch("https://" + url, options.fetchOptions)
+    const response = await fetch(encodeURI("https://" + url), options.fetchOptions)
         .then(res => {
             code = res.status;
             return res.json();
