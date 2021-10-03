@@ -32,6 +32,17 @@ describe("Riot.js", function () {
 
         function summonerDataType(res) {
             expect(res).to.be.an.instanceOf(Object);
+            expect(res.http_code, "Bad request").to.not.be.equal(400);
+            expect(res.http_code, "Unauthorized").to.not.be.equal(401);
+            expect(res.http_code, "Forbidden").to.not.be.equal(403);
+            expect(res.http_code, "Data not found").to.not.be.equal(404);
+            expect(res.http_code, "Method not allowed").to.not.be.equal(405);
+            expect(res.http_code, "Unsupported media type").to.not.be.equal(415);
+            expect(res.http_code, "Rate limit exceeded").to.not.be.equal(429);
+            expect(res.http_code, "Internal server error").to.not.be.equal(500);
+            expect(res.http_code, "Bad gateway").to.not.be.equal(502);
+            expect(res.http_code, "Service unavailable").to.not.be.equal(503);
+            expect(res.http_code, "Gateway timeout").to.not.be.equal(504);
             expect(res.data.id).to.be.a("string");
             expect(res.data.accountId).to.be.a("string");
             expect(res.data.name).to.be.a("string");
@@ -39,7 +50,6 @@ describe("Riot.js", function () {
             expect(res.data.profileIconId).to.be.a("number");
             expect(res.data.revisionDate).to.be.a("number");
             expect(res.data.summonerLevel).to.be.a("number");
-            expect(res.http_code).to.not.be.oneOf([400, 401, 403, 405]);
         }
 
         it("Wrong region error", async function () {
