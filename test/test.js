@@ -30,32 +30,40 @@ describe("Riot.js", function () {
 
     describe("League", function () {
 
+        function summonerDataType(res) {
+            expect(res).to.be.an.instanceOf(Object);
+            expect(res.data.id).to.be.a("string");
+            expect(res.data.accountId).to.be.a("string");
+            expect(res.data.name).to.be.a("string");
+            expect(res.data.puuid).to.be.a("string");
+            expect(res.data.profileIconId).to.be.a("number");
+            expect(res.data.revisionDate).to.be.a("number");
+            expect(res.data.summonerLevel).to.be.a("number");
+            expect(res.http_code).to.not.be.oneOf([400, 401, 403, 405]);
+        }
+
         it("Wrong region error", async function () {
             return RiotJS.league.summoner.getSummonerByName(sumonnerName, "not-a-region").should.eventually.rejected;
         })
 
         it("Get summoner by name", async function () {
             const res = await RiotJS.league.summoner.getSummonerByName(sumonnerName);
-            expect(res).to.be.an.instanceOf(Object);
-            expect(res.data.id).to.equal(summonerId);
+            summonerDataType(res);
         })
 
         it("Get summoner by id", async function () {
             const res = await RiotJS.league.summoner.getSummonerById(summonerId);
-            expect(res).to.be.an.instanceOf(Object);
-            expect(res.data.accountId).to.equal(summonerAccountId);
+            summonerDataType(res);
         })
 
         it("Get summoner by account id", async function () {
             const res = await RiotJS.league.summoner.getSummonerByAccountId(summonerAccountId);
-            expect(res).to.be.an.instanceOf(Object);
-            expect(res.data.puuid).to.equal(summonerPuuid);
+            summonerDataType(res);
         })
 
         it("Get summoner by PUUID", async function () {
             const res = await RiotJS.league.summoner.getSummonerByPuuid(summonerPuuid)
-            expect(res).to.be.an.instanceOf(Object);
-            expect(res.data.name).to.equal(sumonnerName);
+            summonerDataType(res);
         })
 
     })
