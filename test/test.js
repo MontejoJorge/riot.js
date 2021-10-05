@@ -11,9 +11,7 @@ const RiotJS = require("../src");
 const regions = RiotJS.constants.regions;
 
 const sumonnerName = "TehKeppler";
-const summonerId = "4KZeHQEInXf_nTqpXAnKcwgZ9BIKLWC1supkd_JXPirOtb4";
-const summonerAccountId = "nMoaftS2jFSCnvBXibXxGpH4lxuYIW1iCOhKwI1SV8L_5PU";
-const summonerPuuid = "WXsIy2mnvlHCdi3NG6-U6J1ucCcpqDPNRKFzdyOs8AqltupEJL6Wvdv93NHKIq8r23orm-QlNBkf1Q";
+var summonerId, summonerAccountId, summonerPuuid;
 
 describe("Riot.js", function () {
 
@@ -58,6 +56,9 @@ describe("Riot.js", function () {
 
         it("Get summoner by name", async function () {
             const res = await RiotJS.league.summoner.getSummonerByName(sumonnerName);
+            summonerId = res.data.id;
+            summonerAccountId = res.data.accountId; 
+            summonerPuuid = res.data.puuid;
             summonerDataType(res);
         })
 
